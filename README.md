@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Foco Financeiro - App (Frontend)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este repositório contém o código-fonte da interface de usuário (UI) da aplicação **Foco Financeiro**, desenvolvida com React.
 
-## Available Scripts
+## 🚀 Sobre o Projeto
 
-In the project directory, you can run:
+Esta é uma **Single-Page Application (SPA)** que consome a API do Foco Financeiro, permitindo que os usuários se registrem, façam login e gerenciem suas finanças de forma visual e intuitiva.
 
-### `npm start`
+## ✨ Tecnologias e Conceitos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **Framework:** React 18+ (com Hooks)
+* **Gestão de Estado:** React Context API para um gerenciamento global e simplificado do estado de autenticação.
+* **Estilização:** Estilos embutidos via objetos JavaScript, garantindo funcionamento sem dependências de build adicionais.
+* **Containerização:** Docker com um build multi-stage usando Nginx para servir os arquivos estáticos de forma otimizada.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Funcionalidades
 
-### `npm test`
+* Registro e Login de Usuários com autenticação JWT.
+* Criação e listagem de categorias de despesas/ganhos.
+* Criação e listagem de lançamentos financeiros.
+* Painel (Dashboard) protegido, acessível apenas para usuários autenticados.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ▶️ Executando a Aplicação
 
-### `npm run build`
+### Com Docker (Recomendado)
+A forma mais simples e recomendada de executar este frontend é através do [repositório de orquestração](https://github.com/IgorRocha22/foco-financeiro), que gerencia a inicialização da UI, da API e do banco de dados.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Localmente (Sem Docker)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1.  **Pré-requisitos:**
+    * Node.js (versão 18 ou superior)
+    * npm ou yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2.  **Instalação de Dependências:**
+    ```bash
+    npm install
+    ```
 
-### `npm run eject`
+3.  **Execução:**
+    ```bash
+    npm start
+    ```
+    A aplicação iniciará em http://localhost:3000 e tentará se conectar à API em `http://localhost:8080/api`. Certifique-se de que o backend esteja rodando.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🔗 Conexão com a API
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A URL da API é configurada de forma dinâmica. O código usará `http://localhost:8080/api` por padrão.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Para o deploy em produção (ex: Vercel), é necessário configurar a seguinte variável de ambiente no provedor de nuvem:
+* `REACT_APP_API_URL`: Deve conter a URL pública da sua API de backend (ex: `https://sua-api.onrender.com/api`).
